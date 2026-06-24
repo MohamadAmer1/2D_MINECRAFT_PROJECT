@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(192, 93, 196);
+}
+
 #game {
   width: 100vw;
   height: 100vh;
@@ -19,16 +27,47 @@
 .sky {
   background-color: lightblue;
 }
-.dirt {
-  background-image: url("./images/dirt.jpg");
+.cloud{
+    background-image: url("./images/cloud.jpg");
+
 }
+.dirt1 {
+  background-image: url("./images/dirt(with grass).jpg");
+}
+.dirt {
+  background-image: url("./images/dirt(no grass).jpg");
+}
+.oak {
+  background-image: url("./images/oak.jpg");
+}
+.leaf {
+  background-image: url("./images/leaf.jpg");
+}
+.creeper {
+  background-image: url("./images/creeper.jpg");
+}
+.pig {
+  background-image: url("./images/pig.jpg");
+}
+.gold {
+  background-image: url("./images/gold.jpg");
+}
+.iron {
+  background-image: url("./images/iron.jpg");
+}
+.ruby {
+  background-image: url("./images/ruby.jpg");
+}
+.emerald {
+  background-image: url("./images/emerald.jpg");
+}
+
 .diamond {
   background-image: url("./images/diamond.jpg");
 }
 .block {
   background-size: cover;
   background-position: center;
-  border: 1px solid transparent;
 }
 .block:hover {
   border: 1px solid rgb(217, 224, 200);
