@@ -1,0 +1,36 @@
+#game {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+#world {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
+  align-content: flex-start;
+}
+
+#tools {
+  width: 20%;
+  height: 100%;
+}
+
+.sky {
+  background-color: lightblue;
+}
+.dirt {
+  background-image: url("./images/dirt.jpg");
+}
+.diamond {
+  background-image: url("./images/diamond.jpg");
+}
+.block {
+  background-size: cover;
+  background-position: center;
+  border: 1px solid transparent;
+}
+.block:hover {
+  border: 1px solid rgb(217, 224, 200);
+  cursor: pointer;
+}
