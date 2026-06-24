@@ -4,13 +4,6 @@ console.dir(world);
 console.dir(window.innerWidth);
 console.dir(window.innerHeight);
 
-// const World = [
-//   ["sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky"],
-//   ["dirt", "dirt", "dirt","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky"],
-//   ["diamond", "diamond", "diamond","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky", "sky", "sky","sky"],
-
-// ];
-
 /* Decided the tile width + height would be 5% of the overall minimal between width and hight of the world 
  And that way it would be responsive for vertical and horizontal screens */
 const tileHeight = world.clientHeight * (5 / 100);
@@ -24,21 +17,11 @@ function renderWorld() {
   const columns = Math.floor(world.clientWidth / tileSize);
   console.log(rows, columns);
 
-  // All tiles are sky type
+  // Start by making all tiles to be are sky type
   for (let i = 0; i < rows; i++) {
     World[i] = [];
     for (let j = 0; j < columns; j++) {
       World[i][j] = "sky";
-    }
-  }
-
-  // All tiles from half teh screen to 3/4 of the screen height is fills with dirt
-  for (let i = Math.floor(rows / 2); i < Math.floor((3 / 4) * rows); i++) {
-    for (let j = 0; j < columns; j++) {
-      World[i][j] = "dirt";
-      if (i === Math.floor(rows / 2)) {
-        World[i][j] = "dirt1";
-      }
     }
   }
 
@@ -89,45 +72,14 @@ function renderWorld() {
   World[Math.floor(rows / 2) - 1][0] = "pig";
   World[Math.floor(rows / 2) - 1][columns - 1] = "pig";
 
-  // // Adding clouds
-  // World[0][Math.floor((1 / 6) * columns)] = "cloud";
-  // World[0][Math.floor((1 / 6) * columns) + 1] = "cloud";
-
-  // World[1][Math.floor((1 / 6) * columns)] = "cloud";
-  // World[1][Math.floor((1 / 6) * columns) + 1] = "cloud";
-  // World[1][Math.floor((1 / 6) * columns) - 1] = "cloud";
-  // World[1][Math.floor((1 / 6) * columns) + 2] = "cloud";
-
-  // World[2][Math.floor((1 / 6) * columns)] = "cloud";
-  // World[2][Math.floor((1 / 6) * columns) + 1] = "cloud";
-
-  // World[0][Math.floor((3 / 6) * columns)] = "cloud";
-  // World[0][Math.floor((3 / 6) * columns) + 1] = "cloud";
-
-  // World[1][Math.floor((3 / 6) * columns)] = "cloud";
-  // World[1][Math.floor((3 / 6) * columns) + 1] = "cloud";
-  // World[1][Math.floor((3 / 6) * columns) - 1] = "cloud";
-  // World[1][Math.floor((3 / 6) * columns) + 2] = "cloud";
-
-  // World[2][Math.floor((3 / 6) * columns)] = "cloud";
-  // World[2][Math.floor((3 / 6) * columns) + 1] = "cloud";
-
-  // World[0][Math.floor((5 / 6) * columns)] = "cloud";
-  // World[0][Math.floor((5 / 6) * columns) + 1] = "cloud";
-
-  // World[1][Math.floor((5 / 6) * columns)] = "cloud";
-  // World[1][Math.floor((5 / 6) * columns) + 1] = "cloud";
-  // World[1][Math.floor((5 / 6) * columns) - 1] = "cloud";
-  // World[1][Math.floor((5 / 6) * columns) + 2] = "cloud";
-
-  // World[2][Math.floor((5 / 6) * columns)] = "cloud";
-  // World[2][Math.floor((5 / 6) * columns) + 1] = "cloud";
-
-  const stones = ["gold", "iron", "emerald", "diamond", "ruby"];
-  for (let i = Math.floor((3 / 4) * rows); i < rows; i++) {
+  const stones = ["gold", "iron", "emerald", "diamond", "ruby", "dirt"];
+  for (let i = Math.floor(rows / 2); i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       let index = Math.floor(Math.random() * stones.length);
       World[i][j] = stones[index];
+      if (i === Math.floor(rows / 2)) {
+        World[i][j] = "dirt1";
+      }
     }
   }
   return World;
@@ -146,3 +98,30 @@ World.forEach((item) => {
     world.appendChild(div);
   });
 });
+
+const tools = document.getElementById("tools");
+const items = document.getElementById("items");
+
+console.log(tools.clientWidth);
+console.log(tools.clientHeight);
+
+const axe = document.createElement("div");
+axe.classList.add("axe");
+
+const pickaxe = document.createElement("div");
+pickaxe.classList.add("pickaxe");
+
+const shovel = document.createElement("div");
+shovel.classList.add("shovel");
+
+const sword = document.createElement("div");
+sword.classList.add("sword");
+
+const inventory = document.createElement("div");
+inventory.classList.add("inventory");
+
+items.appendChild(axe);
+items.appendChild(pickaxe);
+items.appendChild(shovel);
+items.appendChild(sword);
+items.appendChild(inventory);
