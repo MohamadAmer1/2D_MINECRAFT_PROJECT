@@ -19,17 +19,11 @@ body {
   align-content: flex-start;
 }
 
-#tools {
-  width: 20%;
-  height: 100%;
-}
-
 .sky {
   background-color: lightblue;
 }
-.cloud{
-    background-image: url("./images/cloud.jpg");
-
+.cloud {
+  background-image: url("./images/cloud.jpg");
 }
 .dirt1 {
   background-image: url("./images/dirt(with grass).jpg");
@@ -61,7 +55,6 @@ body {
 .emerald {
   background-image: url("./images/emerald.jpg");
 }
-
 .diamond {
   background-image: url("./images/diamond.jpg");
 }
@@ -72,4 +65,72 @@ body {
 .block:hover {
   border: 1px solid rgb(217, 224, 200);
   cursor: pointer;
+}
+
+#tools {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#buttons {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+#buttons > button {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 5%;
+  width: 40%;
+  border-radius: 10%;
+}
+#buttons > button:nth-child(1) {
+  background-image: url("./images/reset.jpg");
+}
+
+#buttons > button:nth-child(2) {
+  background-image: url("./images/home.jpg");
+}
+
+#items {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+#items > div {
+  width: 50%;
+  height: 12%;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#items > div:hover {
+  border: 1px solid rgb(217, 224, 200);
+  cursor: pointer;
+}
+
+.axe {
+  background-image: url("./images/axe.jpg");
+}
+.pickaxe {
+  background-image: url("./images/pickaxe.jpg");
+}
+.shovel {
+  background-image: url("./images/shovel.jpg");
+}
+.sword {
+  background-image: url("./images/sword.jpg");
+}
+.inventory {
+  background-image: url("./images/inventory.jpg");
 }
