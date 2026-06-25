@@ -82,28 +82,35 @@ function renderWorld() {
       }
     }
   }
-  return World;
+  world.textContent = "";
+  World.forEach((item) => {
+    item.forEach((type) => {
+      const div = document.createElement("div");
+      div.style.width = `${tileSize}px`;
+      div.style.height = `${tileSize}px`;
+      div.classList.add(`${type}`);
+      div.classList.add("block");
+      world.appendChild(div);
+    });
+  });
 }
 
-const World = renderWorld();
-console.log(World);
+renderWorld();
+// let World = renderWorld();
+// World.forEach((item) => {
+//   item.forEach((type) => {
+//     const div = document.createElement("div");
+//     div.style.width = `${tileSize}px`;
+//     div.style.height = `${tileSize}px`;
+//     div.classList.add(`${type}`);
+//     div.classList.add("block");
+//     world.appendChild(div);
+//   });
+// });
 
-World.forEach((item) => {
-  item.forEach((type) => {
-    const div = document.createElement("div");
-    div.style.width = `${tileSize}px`;
-    div.style.height = `${tileSize}px`;
-    div.classList.add(`${type}`);
-    div.classList.add("block");
-    world.appendChild(div);
-  });
-});
+// This is the Part of rendering the tools for usage
 
-const tools = document.getElementById("tools");
 const items = document.getElementById("items");
-
-console.log(tools.clientWidth);
-console.log(tools.clientHeight);
 
 const axe = document.createElement("div");
 axe.classList.add("axe");
@@ -125,3 +132,40 @@ items.appendChild(pickaxe);
 items.appendChild(shovel);
 items.appendChild(sword);
 items.appendChild(inventory);
+
+// Created selectTool function which make sure to update the selectedTool
+
+let selectedTool = "";
+
+function selectTool(e) {
+  console.log(e);
+
+  if (!e.target.classList.value) {
+    return;
+  }
+  selectedTool = e.target.classList.value;
+  console.log(selectedTool);
+}
+
+items.addEventListener("click", selectTool);
+
+// Created selectTile function which make sure to update the selectedTile
+let selectedTile = "";
+function clickTile(e) {
+  console.log(e);
+
+  if (!e.target.classList[0]) {
+    return;
+  }
+  selectedTile = e.target.classList[0];
+  console.log(selectedTile);
+}
+
+world.addEventListener("click", clickTile);
+
+
+
+
+// Created Reset button functionality
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", renderWorld);
