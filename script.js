@@ -143,28 +143,58 @@ function selectTool(e) {
   if (!e.target.classList.value) {
     return;
   }
+  // console.log(document.querySelectorAll("#items > div"));
+
+  document.querySelectorAll("#items > div").forEach((tool) => {
+    tool.classList.remove("chosen-tool");
+  });
+
   selectedTool = e.target.classList.value;
-  console.log(selectedTool);
+  e.target.classList.toggle("chosen-tool");
+
+  // console.log(selectedTool);
 }
 
 items.addEventListener("click", selectTool);
 
-// Created selectTile function which make sure to update the selectedTile
-let selectedTile = "";
+/*
+Created selectTile function which make sure to update the selectedTile
+And according to that it checks if it matches the tool type that is required
+To remove it
+*/ 
+let TileFitTool = {
+  dirt: "shovel",
+  dirt1: "shovel",
+  oak: "axe",
+  leaf: "axe",
+  gold: "pickaxe",
+  iron: "pickaxe",
+  emerald: "pickaxe",
+  diamond: "pickaxe",
+  ruby: "pickaxe",
+  creeper: "sword",
+  pig: "sword",
+};
 function clickTile(e) {
+  const selectedTile = e.target;
   console.log(e);
 
   if (!e.target.classList[0]) {
     return;
   }
-  selectedTile = e.target.classList[0];
-  console.log(selectedTile);
+  selectedTileClass = e.target.classList[0];
+  console.log(selectedTileClass);
+
+  if (TileFitTool[selectedTileClass] !== selectedTool) {
+    return;
+  }
+  console.dir(selectedTile);
+
+  selectedTile.classList.toggle(selectedTileClass);
+  selectedTile.classList.toggle("sky");
 }
 
 world.addEventListener("click", clickTile);
-
-
-
 
 // Created Reset button functionality
 const resetButton = document.getElementById("reset-button");
