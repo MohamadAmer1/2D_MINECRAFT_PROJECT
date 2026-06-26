@@ -148,10 +148,13 @@ function selectTool(e) {
   document.querySelectorAll("#items > div").forEach((tool) => {
     tool.classList.remove("chosen-tool");
   });
-
-  selectedTool = e.target.classList.value;
+  // this class has the tool name
+  selectedTool = e.target.classList[0];
   e.target.classList.toggle("chosen-tool");
-
+  inventoryItems.classList.add("hidden-class");
+  if (selectedTool === "inventory") {
+    inventoryItems.classList.toggle("hidden-class");
+  }
   // console.log(selectedTool);
 }
 
@@ -161,7 +164,7 @@ items.addEventListener("click", selectTool);
 Created selectTile function which make sure to update the selectedTile
 And according to that it checks if it matches the tool type that is required
 To remove it
-*/ 
+*/
 let TileFitTool = {
   dirt: "shovel",
   dirt1: "shovel",
@@ -175,6 +178,19 @@ let TileFitTool = {
   creeper: "sword",
   pig: "sword",
 };
+
+// console.log(document.querySelectorAll(".inventory-items > div"));
+const inventoryItems = document.querySelector(".inventory-items");
+let inventorySize = Math.min(inventoryItems.clientWidth, inventoryItems.clientHeight);
+document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+  console.log(tile);
+  tile.style.width = `${inventorySize * (40 / 100)}px`;
+  tile.style.height = `${inventorySize * (40 / 100)}px`;
+});
+
+// const leaf = document.querySelector(".inventory-items > .leaf");
+// console.dir(leaf);
+
 function clickTile(e) {
   const selectedTile = e.target;
   console.log(e);
