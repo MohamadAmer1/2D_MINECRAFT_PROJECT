@@ -133,6 +133,16 @@ items.appendChild(shovel);
 items.appendChild(sword);
 items.appendChild(inventory);
 
+// Created the inventory items
+// console.log(document.querySelectorAll(".inventory-items > div"));
+const inventoryItems = document.querySelector(".inventory-items");
+let inventorySize = Math.min(inventoryItems.clientWidth, inventoryItems.clientHeight);
+document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+  tile.style.width = `${inventorySize * (40 / 100)}px`;
+  tile.style.height = `${inventorySize * (40 / 100)}px`;
+  tile.style.setProperty("--count-size", `${inventorySize * (15 / 100)}px`);
+});
+
 // Created selectTool function which make sure to update the selectedTool
 
 let selectedTool = "";
@@ -179,17 +189,6 @@ let TileFitTool = {
   pig: "sword",
 };
 
-// console.log(document.querySelectorAll(".inventory-items > div"));
-const inventoryItems = document.querySelector(".inventory-items");
-let inventorySize = Math.min(inventoryItems.clientWidth, inventoryItems.clientHeight);
-document.querySelectorAll(".inventory-items > div").forEach((tile) => {
-  console.log(tile);
-  tile.style.width = `${inventorySize * (40 / 100)}px`;
-  tile.style.height = `${inventorySize * (40 / 100)}px`;
-});
-
-// const leaf = document.querySelector(".inventory-items > .leaf");
-// console.dir(leaf);
 
 function clickTile(e) {
   const selectedTile = e.target;
@@ -206,11 +205,40 @@ function clickTile(e) {
   }
   console.dir(selectedTile);
 
+  document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+    console.dir(tile);
+    if (tile.classList[0] === selectedTileClass) {
+      tile.dataset.count++;
+    }
+  });
+
   selectedTile.classList.toggle(selectedTileClass);
   selectedTile.classList.toggle("sky");
 }
 
 world.addEventListener("click", clickTile);
+
+
+// Created function which its job to save the tile w are clicking in the inventory
+let selectedInventoryTile = "";
+function clickInventoryTile(e) {
+  if (e.target.classList[0] === "inventory-items") {
+    return;
+  }
+
+  document.querySelectorAll(".inventory-items > div").forEach((tool) => {
+    tool.classList.remove("chosen-tool");
+  });
+
+  selectedInventoryTile = e.target.classList[0];
+  e.target.classList.add("chosen-tool");
+  // console.log(selectedInventoryTile);
+  // console.dir(e)
+  
+}
+
+inventoryItems.addEventListener("click", clickInventoryTile);
+
 
 // Created Reset button functionality
 const resetButton = document.getElementById("reset-button");

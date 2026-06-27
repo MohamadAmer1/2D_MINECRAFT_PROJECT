@@ -139,7 +139,7 @@ button:hover {
   background-image: url("./images/inventory.jpg");
 }
 .chosen-tool {
-  outline: 0.5rem solid red;
+  outline: 0.4rem solid red;
 }
 #inventory-box {
   display: flex;
@@ -152,21 +152,31 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
- justify-content: space-around;
-    background-color: white;
-
+  justify-content: space-around;
+  background-color: white;
 }
 
 .inventory-items > div {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
+  --count-size: 3rem;
 }
 .inventory-items > div:hover {
-  border: 1px solid rgb(217, 224, 200);
   cursor: pointer;
 }
 
-.hidden-class{
+.hidden-class {
   display: none;
+}
+
+.inventory-items > div::after {
+  content: "x " attr(data-count);
+  left: 110%;
+  top: 30%;
+  white-space: nowrap;
+  font-size: var(--count-size);
+  color: rgb(192, 93, 196);
+  position: absolute;
 }
