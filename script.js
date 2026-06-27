@@ -144,7 +144,7 @@ document.querySelectorAll(".inventory-items > div").forEach((tile) => {
 });
 
 // Created selectTool function which make sure to update the selectedTool
-
+let selectedInventoryTile = "";
 let selectedTool = "";
 
 function selectTool(e) {
@@ -162,8 +162,14 @@ function selectTool(e) {
   selectedTool = e.target.classList[0];
   e.target.classList.toggle("chosen-tool");
   inventoryItems.classList.add("hidden-class");
+  console.dir(inventoryItems);
+  document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+    tile.classList.remove("chosen-tool");
+  });
   if (selectedTool === "inventory") {
     inventoryItems.classList.toggle("hidden-class");
+  } else {
+    selectedInventoryTile = "";
   }
   // console.log(selectedTool);
 }
@@ -189,16 +195,15 @@ let TileFitTool = {
   pig: "sword",
 };
 
-
 function clickTile(e) {
   const selectedTile = e.target;
-  console.log(e);
+  // console.log(e);
 
   if (!e.target.classList[0]) {
     return;
   }
   selectedTileClass = e.target.classList[0];
-  console.log(selectedTileClass);
+  // console.log(selectedTileClass);
 
   if (TileFitTool[selectedTileClass] !== selectedTool) {
     return;
@@ -206,7 +211,7 @@ function clickTile(e) {
   console.dir(selectedTile);
 
   document.querySelectorAll(".inventory-items > div").forEach((tile) => {
-    console.dir(tile);
+    // console.dir(tile);
     if (tile.classList[0] === selectedTileClass) {
       tile.dataset.count++;
     }
@@ -218,9 +223,7 @@ function clickTile(e) {
 
 world.addEventListener("click", clickTile);
 
-
 // Created function which its job to save the tile w are clicking in the inventory
-let selectedInventoryTile = "";
 function clickInventoryTile(e) {
   if (e.target.classList[0] === "inventory-items") {
     return;
@@ -234,11 +237,48 @@ function clickInventoryTile(e) {
   e.target.classList.add("chosen-tool");
   // console.log(selectedInventoryTile);
   // console.dir(e)
-  
 }
 
 inventoryItems.addEventListener("click", clickInventoryTile);
 
+
+/*
+Created a function which adds a tile which was chosen in the inventory to the world,
+If the number of tiles reach 0 then we cant add more
+*/ 
+
+function addTileToWorld(e) {
+  const selectedTile = e.target;
+  // console.log(e);
+  if (selectedInventoryTile === "") {
+    return;
+  }
+  if (selectedTile.classList[0] !== "sky") {
+    return;
+  }
+
+  // console.dir(selectedTile);
+
+  document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+    // console.dir(selectedTile);
+    // console.dir(tile);
+
+    if (tile.classList[0] === selectedInventoryTile) {
+      if (tile.dataset.count === "0") {
+        return;
+      }
+      selectedTile.classList.remove("sky");
+      selectedTile.classList.toggle(selectedInventoryTile);
+      // console.dir(tile);
+      // console.dir(selectedTile);
+      // console.log(tile.dataset.count);
+
+      tile.dataset.count--;
+    }
+  });
+}
+
+world.addEventListener("click", addTileToWorld);
 
 // Created Reset button functionality
 const resetButton = document.getElementById("reset-button");
