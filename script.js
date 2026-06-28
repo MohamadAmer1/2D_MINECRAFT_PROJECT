@@ -208,9 +208,17 @@ function clickTile(e) {
   if (TileFitTool[selectedTileClass] !== selectedTool) {
     return;
   }
-  console.dir(selectedTile);
+
+  document.querySelectorAll("#sounds > audio").forEach((sound) => {
+    if (selectedTileClass === sound.id) {
+      const activateSound = document.getElementById(sound.id);
+      activateSound.play();
+    }
+  });
 
   document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+    // console.dir(selectedTile);
+
     // console.dir(tile);
     if (tile.classList[0] === selectedTileClass) {
       tile.dataset.count++;
@@ -241,12 +249,10 @@ function clickInventoryTile(e) {
 
 inventoryItems.addEventListener("click", clickInventoryTile);
 
-
 /*
 Created a function which adds a tile which was chosen in the inventory to the world,
 If the number of tiles reach 0 then we cant add more
-*/ 
-
+*/
 function addTileToWorld(e) {
   const selectedTile = e.target;
   // console.log(e);
@@ -258,7 +264,6 @@ function addTileToWorld(e) {
   }
 
   // console.dir(selectedTile);
-
   document.querySelectorAll(".inventory-items > div").forEach((tile) => {
     // console.dir(selectedTile);
     // console.dir(tile);
@@ -269,6 +274,9 @@ function addTileToWorld(e) {
       }
       selectedTile.classList.remove("sky");
       selectedTile.classList.toggle(selectedInventoryTile);
+      selectedTile.classList.toggle("block");
+      selectedTile.classList.toggle("block");
+
       // console.dir(tile);
       // console.dir(selectedTile);
       // console.log(tile.dataset.count);
@@ -277,7 +285,6 @@ function addTileToWorld(e) {
     }
   });
 }
-
 world.addEventListener("click", addTileToWorld);
 
 // Created Reset button functionality
