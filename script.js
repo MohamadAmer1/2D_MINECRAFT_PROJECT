@@ -4,6 +4,19 @@ console.dir(world);
 console.dir(window.innerWidth);
 console.dir(window.innerHeight);
 
+// Created the home screen of the game and the start button functionality + making it responsive to all kinds of screens
+const windowSize = Math.min(Math.floor(window.innerHeight), Math.floor(window.innerWidth));
+
+const homeScreen = document.getElementById("home-screen");
+const startButton = document.getElementById("start-button");
+const H1 = document.querySelector("#home-screen > h1");
+H1.style.fontSize = `${windowSize * 0.2}px`;
+startButton.style.height = `${windowSize * 0.07}px`;
+startButton.style.fontSize = `${windowSize * 0.05}px`;
+startButton.addEventListener("click", () => {
+  homeScreen.classList.add("hidden-class");
+});
+
 /* Decided the tile width + height would be 5% of the overall minimal between width and hight of the world 
  And that way it would be responsive for vertical and horizontal screens */
 const tileHeight = world.clientHeight * (5 / 100);
@@ -290,3 +303,9 @@ world.addEventListener("click", addTileToWorld);
 // Created Reset button functionality
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", renderWorld);
+
+// Created Home button functionality
+const homeButton = document.getElementById("home-button");
+homeButton.addEventListener("click", () => {
+  homeScreen.classList.remove("hidden-class");
+});

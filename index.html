@@ -8,43 +8,51 @@
     <title>2D Minecraft</title>
   </head>
   <body>
-    <div id="game">
-      <div id="world"></div>
-      <div id="tools">
-        <div id="inventory-box">
-          <div id="buttons">
-            <button type="reset" id="reset-button"></button>
-            <button type="button"></button>
+    <div id="app">
+      <div id="game">
+        <div id="world"></div>
+        <div id="tools">
+          <div id="inventory-box">
+            <div id="buttons">
+              <button type="reset" id="reset-button"></button>
+              <button type="button" id="home-button"></button>
+            </div>
+            <div class="inventory-items">
+              <div class="leaf" data-count="0"></div>
+              <div class="oak" data-count="0"></div>
+              <div class="dirt1" data-count="0"></div>
+              <div class="dirt" data-count="0"></div>
+              <div class="gold" data-count="0"></div>
+              <div class="iron" data-count="0"></div>
+              <div class="ruby" data-count="0"></div>
+              <div class="emerald" data-count="0"></div>
+              <div class="diamond" data-count="0"></div>
+              <div class="pig" data-count="0"></div>
+              <div class="creeper" data-count="0"></div>
+            </div>
           </div>
-          <div class="inventory-items">
-            <div class="leaf" data-count="0"></div>
-            <div class="oak" data-count="0"></div>
-            <div class="dirt1" data-count="0"></div>
-            <div class="dirt" data-count="0"></div>
-            <div class="gold" data-count="0"></div>
-            <div class="iron" data-count="0"></div>
-            <div class="ruby" data-count="0"></div>
-            <div class="emerald" data-count="0"></div>
-            <div class="diamond" data-count="0"></div>
-            <div class="pig" data-count="0"></div>
-            <div class="creeper" data-count="0"></div>
-          </div>
+          <div id="items"></div>
         </div>
-        <div id="items"></div>
       </div>
-    </div>
-    <div id="sounds">
-      <audio id="creeper" src="./sounds/minecraftCreeperDyingSound.mp3"></audio>
-      <audio id="pig" src="./sounds/minecraftPigDyingSound.mp3"></audio>
-      <audio id="leaf" src="./sounds/minecraftLeafBreakingSound.mp3"></audio>
-      <audio id="oak" src="./sounds/minecraftOakBreakingSound.mp3"></audio>
-      <audio id="dirt" src="./sounds/minecraftDirtBreakingSound.mp3"></audio>
-      <audio id="dirt1" src="./sounds/minecraftDirtBreakingSound.mp3"></audio>
-      <audio id="diamond" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
-      <audio id="gold" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
-      <audio id="ruby" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
-      <audio id="iron" src="./sounds/minecraftIronBreakingSound.mp3"></audio>
-      <audio id="emerald" src="./sounds/minecraftIronBreakingSound.mp3"></audio>
+      <div id="sounds">
+        <audio id="creeper" src="./sounds/minecraftCreeperDyingSound.mp3"></audio>
+        <audio id="pig" src="./sounds/minecraftPigDyingSound.mp3"></audio>
+        <audio id="leaf" src="./sounds/minecraftLeafBreakingSound.mp3"></audio>
+        <audio id="oak" src="./sounds/minecraftOakBreakingSound.mp3"></audio>
+        <audio id="dirt" src="./sounds/minecraftDirtBreakingSound.mp3"></audio>
+        <audio id="dirt1" src="./sounds/minecraftDirtBreakingSound.mp3"></audio>
+        <audio id="diamond" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
+        <audio id="gold" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
+        <audio id="ruby" src="./sounds/minecraftDiamondBreakingSound.mp3"></audio>
+        <audio id="iron" src="./sounds/minecraftIronBreakingSound.mp3"></audio>
+        <audio id="emerald" src="./sounds/minecraftIronBreakingSound.mp3"></audio>
+      </div>
+
+      <div id="home-screen">
+        <h1>2D Minecraft</h1>
+
+        <button id="start-button">Start Game</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
