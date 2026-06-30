@@ -272,7 +272,7 @@ function addTileToWorld(e) {
   if (selectedInventoryTile === "") {
     return;
   }
-  if (selectedTile.classList[0] !== "sky") {
+  if (!selectedTile.classList.contains("sky")) {
     return;
   }
 
@@ -281,10 +281,12 @@ function addTileToWorld(e) {
     // console.dir(selectedTile);
     // console.dir(tile);
 
-    if (tile.classList[0] === selectedInventoryTile) {
+    if (!tile.classList[0] === selectedInventoryTile) {
       if (tile.dataset.count === "0") {
         return;
       }
+      const placingBlocks = document.getElementById("placing-blocks");
+      placingBlocks.play();
       selectedTile.classList.remove("sky");
       selectedTile.classList.toggle(selectedInventoryTile);
       selectedTile.classList.toggle("block");
