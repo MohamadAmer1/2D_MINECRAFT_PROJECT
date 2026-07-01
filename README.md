@@ -222,6 +222,8 @@ This project was built without any frameworks or libraries. The main goal was to
 
 It helped me better understand how DOM elements, classes, events, sounds, and game logic can work together in one project.
 
+DO NOT MAKE THE SCREEN ZOOM IN TOO BIG CAUSE THE BORDER OVER THE USED TOOL/TILE WOULD BE TOO BIG, MAKE IT 50% OR LESS
+
 ---
 
 ## 👨‍💻 Author
