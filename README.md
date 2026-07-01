@@ -10,7 +10,7 @@ This project was created as part of my practice with DOM manipulation, event lis
 
 The game starts with an animated home screen that includes a title and a start button. After clicking the start button, the player enters the game world.
 
-The world is generated dynamically using JavaScript. It contains sky, dirt, trees, stones, animals, and a creeper. The player can choose the correct tool to remove specific blocks or characters, collect them in the inventory, and place collected blocks back into empty sky tiles.
+The world is generated dynamically using JavaScript(most importantly it is responsive). It contains sky, dirt, trees, stones, animals, and a creeper. The player can choose the correct tool to remove specific blocks or characters, collect them in the inventory, and place collected blocks back into empty sky tiles.
 
 ---
 
@@ -109,11 +109,13 @@ During this project, I practiced:
 ---
 
 ### Modified Map
+
 ![After Playing the Game For a bit](./screenshots/modified-map.png)
 
 ---
 
 ### OverAll Lookup on the Project
+
 ![Game Lookup](./screenshots/game-world.png)
 
 ---
@@ -134,7 +136,6 @@ project-folder/
 ├── index.html
 ├── styles.css
 ├── script.js
-├── favicon.ico
 │
 ├── images/
 │   ├── minecraft-background.gif
@@ -171,7 +172,9 @@ project-folder/
     ├── home-screen.png
     ├── game-world.png
     ├── tool-selection.png
-    └── inventory-system.png
+    ├── inventory-system.png
+    ├── modified-map.png
+    └── map-world.png
 ```
 
 ---
