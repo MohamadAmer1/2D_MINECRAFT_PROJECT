@@ -106,6 +106,9 @@ function renderWorld() {
       world.appendChild(div);
     });
   });
+  document.querySelectorAll(".inventory-items > div").forEach((tile) => {
+    tile.dataset.count = 0;
+  });
 }
 
 renderWorld();
@@ -281,7 +284,7 @@ function addTileToWorld(e) {
     // console.dir(selectedTile);
     // console.dir(tile);
 
-    if (!tile.classList[0] === selectedInventoryTile) {
+    if (tile.classList[0] === selectedInventoryTile) {
       if (tile.dataset.count === "0") {
         return;
       }
@@ -310,4 +313,5 @@ resetButton.addEventListener("click", renderWorld);
 const homeButton = document.getElementById("home-button");
 homeButton.addEventListener("click", () => {
   homeScreen.classList.remove("hidden-class");
+  renderWorld();
 });

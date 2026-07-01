@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: rgb(192, 93, 196);
+  background-color: #6667AB
 }
 
 #app {
@@ -287,6 +287,6 @@ button:hover {
   top: 30%;
   white-space: nowrap;
   font-size: var(--count-size);
-  color: rgb(192, 93, 196);
+  color: #6667AB;
   position: absolute;
 }
